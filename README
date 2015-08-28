@@ -1,0 +1,26 @@
+Hello,
+
+As requested, I have written a short chef recipe that will allow you to do the following:
+
+1. Install nginx.
+2. Serve requests to nginx on port 8000.
+3. Serve the content found here: https://github.com/puppetlabs/exercise-webpage
+4. Remove the nginx "default" site symlink.
+
+All other nginx configuration has been left as the default as requested.
+
+If you wish to use this on more systems, the procedure is the following:
+
+1. Clone this repo to your workstation.
+2. Spin up new server running debian 8.
+3. This server should have the "deploy" user created, and the public key on your workstation added to the deploy user's authorized_keys file. I would be happy to explain this procedure if desired.
+4. Be sure to disable root login for ssh, and disable ssh password based login for security reasons.
+5. Run visudo on your new server and add the following line to allow the deploy user to sudo without a password: 
+deploy ALL=(ALL:ALL) NOPASSWD:ALL
+6. Run ./deploy.sh deploy@<hostname> 
+
+Please note that running this will restart nginx. (normally I would do a reload, but looks like there is a problem with systemd where this is not working)
+
+If you would like this script to work for red hat based systems, please let me know as it would only take a small amount of modification to our scripts to get that working as well.
+
+You should be all set! Please let me know if you have any questions here.
