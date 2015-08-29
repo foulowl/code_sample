@@ -7,7 +7,7 @@ file '/etc/nginx/sites-enabled/default' do
 	notifies :restart, "service[nginx]"
 end 
 
-#once we remove the symlink above and create the symlink for 
+#once we remove the symlink above restart nginx
 service 'nginx' do
 	action [:start, :enable]
 end
